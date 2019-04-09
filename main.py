@@ -116,13 +116,9 @@ def _export_redis_stats_gov_cn():
         print(f'指定 {year} 年份的数据文件 {config.ROOT_PATH}data{os.sep}{year}{os.sep}db_stats.gov.cn.sqlite 不存在，请确认是否已采集。Bye.')
         exit()
     print(f'开始 {year} 年统计局信息导出到 Redis。')
-    worker.export_redis_stats_gov_cn(
-        db_path=f'{config.ROOT_PATH}data{os.sep}{year}{os.sep}',
-        redis_host=f'{config.REDIS_HOST}',
-        redis_port=f'{config.REDIS_PORT}',
-        redis_pass=f'{config.REDIS_PASS}',
-        redis_db=f'{config.REDIS_DB}',
-        ssh_config={
+    # 如果 SSH_HOST 配置不为空，则传入 ssh_config
+    if config.SSH_HOST != '':
+        ssh_config = {
             'host': config.SSH_HOST,
             'port': config.SSH_PORT,
             'username': config.SSH_USERNAME,
@@ -130,7 +126,16 @@ def _export_redis_stats_gov_cn():
             'pkey': config.SSH_PKEY,
             'bind_host': config.SSH_BIND_HOST,
             'bind_port': config.SSH_BIND_PORT,
-        },
+        }
+    else:
+        ssh_config = None
+    worker.export_redis_stats_gov_cn(
+        db_path=f'{config.ROOT_PATH}data{os.sep}{year}{os.sep}',
+        redis_host=f'{config.REDIS_HOST}',
+        redis_port=f'{config.REDIS_PORT}',
+        redis_pass=f'{config.REDIS_PASS}',
+        redis_db=f'{config.REDIS_DB}',
+        ssh_config=ssh_config,
         show_log=config.SHOW_LOG,
     )
     print(f'完成 {year} 年统计局信息导出到 Redis。{os.linesep}'
