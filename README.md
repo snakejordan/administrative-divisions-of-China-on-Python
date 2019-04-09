@@ -114,11 +114,11 @@ $ python3 main.py
 * 县级：https://pcctv.public.ty289.com/stats/county
 * 乡级：https://pcctv.public.ty289.com/stats/town
 * 村级：https://pcctv.public.ty289.com/stats/village
-#### 请求参数
+#### 请求参数：
 除省级无需请求参数以外，其它四级均需要名称为 topCode 的上级编号作为请求参数，topCode 的值为上一级数据的 statistical_code 值。
-#### 请求方法
+#### 请求方法：
 支持 GET POST PUT 等请求方法，支持 XHR fetch 等请求方式。
-#### Postman 示例
+#### Postman 示例：
 省级示例：
 
 ![省级示例](https://raw.githubusercontent.com/snakejordan/static-file/master/administrative-divisions-of-China-on-Python/doc/images/api_example_province.png "省级示例")
@@ -138,7 +138,7 @@ $ python3 main.py
 村级示例：
 
 ![村级示例](https://raw.githubusercontent.com/snakejordan/static-file/master/administrative-divisions-of-China-on-Python/doc/images/api_example_village.png "村级示例")
-#### 特例
+#### 特例：
 部分地区不存在五级数据，为保证一致性接口统一返回五级数据，本级数据与上级数据的 statistical_code 相同时意味着层级不足五级，需调用者进行额外处理。
 
 例如：
