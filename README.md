@@ -171,3 +171,8 @@ $ python3 main.py
 > 提示：邮件回复的下载链接为 google drive 中存储的文件，是否能下载你懂得🙃。
 ## Over
 恩，以上是所有说明，后面没有要说的了😊。
+
+-----
+
+## 特别鸣谢
+本项目是受 [modood](https://github.com/modood) 的 [Administrative-divisions-of-China](https://github.com/modood/Administrative-divisions-of-China) 项目启发而编写，由于不擅长 NodeJS 以及觉得 [Administrative-divisions-of-China](https://github.com/modood/Administrative-divisions-of-China) 在数据及使用便利性上有一点点问题，所以重复造了个轮子，在此对 [modood](https://github.com/modood) 表示特别鸣谢。
