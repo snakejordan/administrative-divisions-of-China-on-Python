@@ -48,6 +48,13 @@ def _fetch_stats_gov_cn():
     """
     # 接收输入并验证
     year = _year_input()
+    if _check_db_file_exist(year) is True:
+        confirm = input(f'{config.ROOT_PATH}data{os.sep}{year}{os.sep}db_stats.gov.cn.sqlite '
+                        f'文件已存在，继续抓取会覆盖原文件，是否继续？(y or n) ')
+        print(confirm)
+        if confirm != 'y' and confirm != 'Y':
+            print('Bye.')
+            exit()
     print(f'开始 {year} 年统计局信息抓取')
     worker.fetch_stats_gov_cn(
         config.STATS_GOV_CN_SITE.replace('$YEAR$', str(year)),
